@@ -22,11 +22,10 @@ validateGenre = (genre) => {
 };
 
 embeddingGenre = (value) => {
-    const genre = {
+    return genre = {
         _id: value._id,
         name: value.name
     };
-    return genre;
 };  
 
 module.exports.embeddingGenre = embeddingGenre;
