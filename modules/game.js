@@ -32,7 +32,7 @@ validateGame = (game) => {
         name: Joi.string().max(50).min(1).required(),
         year: Joi.number().max(3000).min(2000).required(),
         isPublish: Joi.boolean(),
-        genreId: Joi.string().required()
+        genreId: Joi.objectId().required()
     }
     return Joi.validate(game, shema);
 };

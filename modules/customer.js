@@ -33,7 +33,7 @@ validateCustomer = (customer) => {
         name: Joi.string().max(50).min(1).required(),
         phone: Joi.string().max(20).min(10),
         isMembership: Joi.boolean(),
-        shoppingCarId: Joi.array().items(Joi.string())
+        shoppingCarId: Joi.array().items(Joi.objectId().required())
     }
 
     return Joi.validate(customer, schema);
