@@ -1,6 +1,6 @@
 const express = require('express');
 const {validateGame, Game} = require('../modules/game.js');
-const {Genre} = require('../modules/genre.js')
+const {Genre, embeddingGenre} = require('../modules/genre.js')
 const router = express.Router();
 
 router.get('/', async(req, res) => {
@@ -27,10 +27,7 @@ router.post('/', async (req, res) => {
         name: req.body.name,
         year: req.body.year,
         isPublish: req.body.isPublish,
-        genre: {
-            _id: genre._id,
-            name: genre.name
-        }
+        genre: embeddingGenre(genre)
     });
 
     const result = await game.save();
