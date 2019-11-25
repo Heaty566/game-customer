@@ -44,10 +44,7 @@ router.put('/:id', async (req, res) => {
         game.name = req.body.name;
         game.year = req.body.year;
         game.isPublish = req.body.isPublish;
-        game.genre= {
-            _id: genre._id,
-            name: genre.name
-        };
+        game.genre= embeddingGenre(genre);
         const result = await game.save();
         res.send(result);
     } catch (err) {
