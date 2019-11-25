@@ -21,6 +21,15 @@ validateGenre = (genre) => {
     return Joi.validate(genre,shema);
 };
 
+embeddingGenre = (value) => {
+    const genre = {
+        _id: value._id,
+        name: value.name
+    };
+    return genre;
+};  
+
+module.exports.embeddingGenre = embeddingGenre;
 module.exports.genreSchame = genreSchame;
 module.exports.Genre = Genre;
 module.exports.validateGenre = validateGenre;

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Joi = require('joi');
-const  {genreSchame} = require('./genre.js');
+const  {genreSchame, embeddingGenre} = require('./genre.js');
 
 const gameSchame = new mongoose.Schema({
     name: {
@@ -34,9 +34,19 @@ validateGame = (game) => {
         isPublish: Joi.boolean(),
         genreId: Joi.string().required()
     }
-
     return Joi.validate(game, shema);
 };
+
+embeddingGame = (value, value2) => {
+    const game = {
+        _id: value,
+        name: value.name,
+        year: value.year,
+        isPublish: value.isPublish,
+        embeddingGame(value2);
+    }
+    return game;
+}
 
 module.exports.gameSchame = gameSchame;
 module.exports.Game = Game;
