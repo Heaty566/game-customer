@@ -62,6 +62,7 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
     const {error: error1} = validateId({ id: req.params.id });
     if (error1) return res.status(404).send("the game with the given Id was not found"); 
+    
     const game = await Game.findOneAndDelete({_id: req.params.id});
     res.send(game);
 });
