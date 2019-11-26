@@ -1,8 +1,8 @@
-const Joi = require('joi');
-Joi.objectId = require('joi-objectid')(Joi);
 const mongoose = require('mongoose');
 const express = require('express');
 const app = express();
+const Joi = require('joi');
+Joi.objectId = require('joi-objectid')(Joi);
 const genre = require('./routes/genre.js');
 const game = require('./routes/game.js');
 const customer = require('./routes/customer.js')

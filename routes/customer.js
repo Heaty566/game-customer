@@ -1,6 +1,6 @@
 const express = require('express');
 const {validateCustomer, Customer} = require('../modules/customer.js');
-const {Game, embeddingGame} = require('../modules/game.js')
+const {Game} = require('../modules/game.js')
 const router = express.Router();
 
 router.get('/', async(req, res) => {
@@ -29,7 +29,16 @@ router.post('/', async (req, res) => {
 
     for (let gameId of req.body.shoppingCarId){
         const game = await Game.findOne({_id: gameId});
-        const gamep = embeddingGame(game);
+        const gamep = {
+            name: game.name,
+            year: game.year,
+            isPublish: game.isPublish,
+            genre: {
+                _id: game.genre._id,
+                name: game.genre.name
+            }
+        };
+
         customer.shoppingCar.push(gamep);
     };
 
