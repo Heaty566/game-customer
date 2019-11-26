@@ -37,13 +37,13 @@ validateGame = (game) => {
     return Joi.validate(game, shema);
 };
 
-embeddingGame = (value, value2) => {
+embeddingGame = (value) => {
     return game = {
-        _id: value,
+        _id: value._id,
         name: value.name,
         year: value.year,
         isPublished: value.isPublished,
-        genre: embed(value2)
+        genre: value.genre
     }
 }
 

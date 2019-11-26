@@ -20,7 +20,7 @@ const customerSchame = new mongoose.Schema({
         type: Boolean,
         default: false
     },
-    shoppingCar: {
+    games: {
         type: [gameSchame],
         required: true
     }
@@ -33,11 +33,10 @@ validateCustomer = (customer) => {
         name: Joi.string().max(50).min(1).required(),
         phone: Joi.string().max(20).min(10),
         isMembership: Joi.boolean(),
-        shoppingCarId: Joi.array().items(Joi.objectId())
+        gamesId: Joi.array().items(Joi.objectId())
     }
     return Joi.validate(customer, schema);
 };
 
-module.exports.validateCustomer = validateCustomer;
+module.exports.validate = validateCustomer;
 module.exports.Customer = Customer;
-module.exports.customerSchame = customerSchame;
