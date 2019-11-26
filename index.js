@@ -7,10 +7,12 @@ const Joi = require('joi');
 Joi.objectId = require('joi-objectid')(Joi);
 
 const genres = require('./routes/genres-route');
+const games = require('./routes/games-route');
 
 
 app.use(express.json());
 app.use('/genres', genres);
+app.use('/games', games);
 
 
 mongoose.connect("mongodb://localhost/game-project",  { useNewUrlParser: true,  useUnifiedTopology: true} )

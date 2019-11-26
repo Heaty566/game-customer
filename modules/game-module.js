@@ -14,7 +14,7 @@ const gameSchame = new mongoose.Schema({
         max: 3000,
         min: 2000
     },
-    isPublish: {
+    isPublished: {
         type: Boolean,
         default: false
     },
@@ -31,7 +31,7 @@ validateGame = (game) => {
     const shema = {
         name: Joi.string().max(50).min(1).required(),
         year: Joi.number().max(3000).min(2000).required(),
-        isPublish: Joi.boolean(),
+        isPublished: Joi.boolean(),
         genreId: Joi.objectId().required()
     }
     return Joi.validate(game, shema);
@@ -42,7 +42,7 @@ embeddingGame = (value, value2) => {
         _id: value,
         name: value.name,
         year: value.year,
-        isPublish: value.isPublish,
+        isPublished: value.isPublished,
         genre: embed(value2)
     }
 }
