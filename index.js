@@ -1,16 +1,17 @@
 const mongoose = require('mongoose');
+
 const express = require('express');
 const app = express();
+
 const Joi = require('joi');
 Joi.objectId = require('joi-objectid')(Joi);
-const genre = require('./routes/genre.js');
-const game = require('./routes/game.js');
-const customer = require('./routes/customer.js')
-app.use(express.json());
 
-app.use('/genres', genre);
-app.use('/games', game);
-app.use('/customers', customer);
+const genres = require('./routes/genres-route');
+
+
+app.use(express.json());
+app.use('/genres', genres);
+
 
 mongoose.connect("mongodb://localhost/game-project",  { useNewUrlParser: true,  useUnifiedTopology: true} )
     .then(() => console.log('connect to server succesfully'))
