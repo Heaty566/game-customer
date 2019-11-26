@@ -54,13 +54,11 @@ router.put('/:id', async (req, res) => {
 });
 
 router.delete('/:id', async (req, res) => {
-    try {
-        const game = await Game.findOneAndDelete({_id: req.params.id});
-        const result = await game.save();
-        res.send(result);
-    } catch (err) {
-        res.status(404).send("the game with the given ID was not found");
-    }
+    const game = await Game.findOneAndDelete({_id: req.params.id});
+    res.status(404).send("the game with the given ID was not found");
+    
+    const result = await game.save();
+    res.send(result);
 });
 
 module.exports = router;
