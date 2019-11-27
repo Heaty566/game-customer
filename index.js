@@ -1,6 +1,7 @@
 //import mongoose
 const mongoose = require('mongoose');
 //import express and create app
+const config = require('config');
 const express = require('express');
 const app = express();
 //import Joi and objectId
@@ -19,6 +20,12 @@ app.use('/games', games);
 app.use('/customers', customers);
 app.use('/users', users);
 app.use('/auth', auth);
+
+if (!config.get('app.jwtPrivateKey')) {
+    console.log("FATAL ERROR: jwtPrivate");
+    process.exit(1);
+};
+
 //connect to mongoose db
 mongoose.connect("mongodb://localhost/game-project",  { useNewUrlParser: true,  useUnifiedTopology: true} )
     .then(() => console.log('connect to server succesfully'))
