@@ -1,8 +1,8 @@
 const _ = require('lodash');
-
+//import express and router
 const express = require('express');
 const router = express.Router();
-
+//import module
 const {validate, Genre} = require('../modules/genre-module');
 const {validateId} = require('../modules/handle-module');
 
