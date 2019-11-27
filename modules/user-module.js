@@ -20,18 +20,23 @@ const schemaUser = new mongoose.Schema({
         type: String,
         max: 1000,
         required: true
-    },
-    shoppingCars: {
-        type: customerSchame,
-        required: true
     }
+    // ,
+    // shoppingCars: {
+    //     type: customerSchame,
+    //     required: true
+    // }
 });
 
 const User = mongoose.model('user', schemaUser);
 
-validate = (customer) => {
-    name: Joi.string().min(3).max(50).required(),
-    
+validateUser = (user) => {
+    const schema = {
+        name: Joi.string().min(3).max(50).required(),
+        email: Joi.string().min(5).max(200).email(),
+        password: Joi.string().min(5).max(1000).required()
+    }
+    return Joi.validate(user, schema);
 }
 
 

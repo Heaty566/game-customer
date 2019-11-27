@@ -38,6 +38,16 @@ validateCustomer = (customer) => {
     return Joi.validate(customer, schema);
 };
 
+embed = (value) => {
+    return customer = {
+        _id: value.id,
+        name: value.name,
+        phone: value.phone,
+        isMembership: isMembership,
+        games: value.games
+    }
+};
+
 
 module.exports.customerSchame = customerSchame;
 module.exports.validate = validateCustomer;
